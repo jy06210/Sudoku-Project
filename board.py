@@ -10,7 +10,10 @@ class Board:
        Draws every cell on this board.
    '''
     def draw(self):
-        pass
+        #draw row
+        for i in range (0,9):
+            if i%3!=0:
+            pygame.draw.line(self.screen, (0,0,0),(0,i*100), (900, i*100),())
 
     '''Marks the cell at (row, col) in the board as the current selected cell.
 	Once a cell has been selected, the user can edit its value or sketched value.
