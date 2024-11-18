@@ -36,7 +36,7 @@ class SudokuGenerator():
         self.row_length = row_length
         self.removed_cells = removed_cells
 
-        self.board =
+        self.board = [[],[],[],[],[],[],[],[],[]]
         self.box_length = (row_length) ** .5
 
 
