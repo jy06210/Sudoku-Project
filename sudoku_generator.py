@@ -166,18 +166,9 @@ class SudokuGenerator():
 	Return: None
     '''
     def fill_diagonal(self):
-        digits = list(range(0, 3))
-        random.shuffle(digits)
-
-        for i in range(row_start, row_start + 2):
-            for j in range(col_start, col_start + 2):
-                for num in digits:
-                    if self.empty(row_start, col_start, num):
-                        self.grid[i][j] = num
-                        digits.remove(num)
-                        break
+        for i in range(0, 9, 3):
+            self.fill_box(i, i)
         return None
-
 
 '''
     DO NOT CHANGE
