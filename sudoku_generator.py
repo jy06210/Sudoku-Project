@@ -145,11 +145,11 @@ class SudokuGenerator():
 	Return: None
     '''
     def fill_box(self, row_start, col_start):
-        digits = list(range(1, 10))
+        digits = list(range(0, 3))
         random.shuffle(digits)
 
-        for i in range(row_start, row_start +3):
-            for j in range(col_start, col_start +3):
+        for i in range(row_start, row_start +2):
+            for j in range(col_start, col_start +2):
                 for num in digits:
                     if self.empty(row_start, col_start, num):
                         self.grid[i][j] = num
