@@ -130,7 +130,7 @@ class SudokuGenerator():
             col_start=col//3+1
         else:
             col_start=col//3
-        if valid_in_row(self, row, num) and valid_in_col(self, col, num) and valid_in_box(self,row_start, col_start, num):
+        if self.valid_in_row(row, num) and self.valid_in_col(col, num) and self.valid_in_box(row_start, col_start, num):
             return True
         return False
 
