@@ -22,6 +22,14 @@ class SudokuGenerator():
 	Return:
 	None
     '''
+
+    def generate_nested_list(num_lists=9, list_length=9):
+        nested_list = []
+        for i in range(num_lists):
+            inner_list = [random.randint(1, 10) for i in range(list_length)]
+            nested_list.append(inner_list)
+        return nested_list
+
     def __init__(self, row_length, removed_cells):
         row_length = 9
         self.row_length = row_length
