@@ -23,13 +23,6 @@ class SudokuGenerator():
 	None
     '''
 
-    def generate_nested_list(num_lists=9, list_length=9):
-        nested_list=[]
-        for i in range(num_lists):
-            inner_list = [random.randint(1, 10) for i in range(list_length)]
-            nested_list.append(inner_list)
-        return nested_list
-
 
     def __init__(self, row_length, removed_cells):
         row_length = 9
@@ -57,7 +50,7 @@ class SudokuGenerator():
 	Return: None
     '''
     def print_board(self):
-        pass
+        print(self.board)
 
     '''
 	Determines if num is contained in the specified row (horizontal) of the board
@@ -145,11 +138,12 @@ class SudokuGenerator():
 	Return: None
     '''
     def fill_box(self, row_start, col_start):
+
         digits = list(range(1, 10))
         random.shuffle(digits)
 
-        for i in range(row_start, row_start +3):
-            for j in range(col_start, col_start +3):
+        for i in range(row_start, row_start +2):
+            for j in range(col_start, col_start +2):
                 for num in digits:
                     if self.empty(row_start, col_start, num):
                         self.grid[i][j] = num
@@ -166,18 +160,9 @@ class SudokuGenerator():
 	Return: None
     '''
     def fill_diagonal(self):
-        digits = list(range(0, 3))
-        random.shuffle(digits)
-
-        for i in range(row_start, row_start + 2):
-            for j in range(col_start, col_start + 2):
-                for num in digits:
-                    if self.empty(row_start, col_start, num):
-                        self.grid[i][j] = num
-                        digits.remove(num)
-                        break
+        for i in range(0, 9, 3):
+            self.fill_box(i, i)
         return None
-
 
 '''
     DO NOT CHANGE
