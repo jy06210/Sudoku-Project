@@ -38,9 +38,13 @@ class Board:
     sketched values that are filled by themselves.
     '''
     def clear(self):
+        row, col = self.selected_row, self.selected_col
+        if self.user_filled[row][col]:
+            self.grid[row][col] = 0
+            self.user_filled[row][col] = False
+            self.update_display()
 
-
-    '''Sets the sketched value of the current selected cell equal to the user entered value.
+        '''Sets the sketched value of the current selected cell equal to the user entered value.
 	It will be displayed at the top left corner of the cell using the draw() function.
     '''
     def sketch(self, value):
