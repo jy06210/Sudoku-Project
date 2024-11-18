@@ -1,4 +1,4 @@
-
+import pygame
 class Board:
     def __init__(self, width, height, screen, difficulty):
         self.width = width
@@ -11,9 +11,18 @@ class Board:
    '''
     def draw(self):
         #draw row
-        for i in range (0,9):
+        for i in range (0,10):
             if i%3!=0:
-            pygame.draw.line(self.screen, (0,0,0),(0,i*100), (900, i*100),())
+                pygame.draw.line(self.screen, (0,0,0),(0,i*100), (900, i*100))
+            else:
+                pygame.draw.line(self.screen, (0,0,0), (0, i*100), (900, i*100), (10))
+        #draw col
+        for i in range (0,10):
+            if i%3!=0:
+                pygame.draw.line(self.screen, (0,0,0), (i*100, 0), (i*100,900))
+            else:
+                pygame.draw.line(self.screen, (0,0,0), (0, i*100), (900, i*100))
+
 
     '''Marks the cell at (row, col) in the board as the current selected cell.
 	Once a cell has been selected, the user can edit its value or sketched value.
