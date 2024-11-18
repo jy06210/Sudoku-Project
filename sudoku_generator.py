@@ -36,7 +36,7 @@ class SudokuGenerator():
         self.row_length = row_length
         self.removed_cells = removed_cells
 
-        self.board =
+        self.board =[[],[],[],[],[],[],[],[],[]]
         self.box_length = (row_length) ** .5
 
 
@@ -130,7 +130,7 @@ class SudokuGenerator():
             col_start=col//3+1
         else:
             col_start=col//3
-        if valid_in_row(self, row, num) and valid_in_col(self, col, num) and valid_in_box(self,row_start, col_start, num):
+        if self.valid_in_row(row, num) and self.valid_in_col(col, num) and self.valid_in_box(row_start, col_start, num):
             return True
         return False
 
@@ -145,11 +145,11 @@ class SudokuGenerator():
 	Return: None
     '''
     def fill_box(self, row_start, col_start):
-        digits = list(range(0, 3))
+        digits = list(range(1, 10))
         random.shuffle(digits)
 
-        for i in range(row_start, row_start +2):
-            for j in range(col_start, col_start +2):
+        for i in range(row_start, row_start +3):
+            for j in range(col_start, col_start +3):
                 for num in digits:
                     if self.empty(row_start, col_start, num):
                         self.grid[i][j] = num
@@ -166,9 +166,20 @@ class SudokuGenerator():
 	Return: None
     '''
     def fill_diagonal(self):
-        pass
+        digits = list(range(0, 3))
+        random.shuffle(digits)
 
-    '''
+        for i in range(row_start, row_start + 2):
+            for j in range(col_start, col_start + 2):
+                for num in digits:
+                    if self.empty(row_start, col_start, num):
+                        self.grid[i][j] = num
+                        digits.remove(num)
+                        break
+        return None
+
+
+'''
     DO NOT CHANGE
     Provided for students
     Fills the remaining cells of the board
