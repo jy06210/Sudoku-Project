@@ -1,4 +1,3 @@
-
 class Board:
     def __init__(self, width, height, screen, difficulty):
         self.width = width
@@ -19,21 +18,24 @@ class Board:
 	Once a cell has been selected, the user can edit its value or sketched value.
     '''
     def select(self, row, col):
-        pass
+        self.selected_row = row
+        self.selected_col = col
 
     '''If a tuple of (x,y) coordinates is within the displayed board, 
     this function returns a tuple of the (row, col) of the cell which was clicked. 
     Otherwise, this function returns None.
     '''
     def click(self, row, col):
-        pass
+        if 0 <= row < 9 and 0 <= col < 9:
+            return (row, col)
+        return None
 
     '''Clears the value cell. 
     Note that the user can only remove the cell values and 
     sketched values that are filled by themselves.
     '''
     def clear(self):
-        pass
+
 
     '''Sets the sketched value of the current selected cell equal to the user entered value.
 	It will be displayed at the top left corner of the cell using the draw() function.
