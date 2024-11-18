@@ -134,8 +134,19 @@ class SudokuGenerator():
 	Return: None
     '''
     def fill_box(self, row_start, col_start):
-        pass
-    
+        digits = list(range(1, 10))
+        random.randint(digits)
+
+        for i in range(row_start, row_start +2):
+            for j in range(col_start, col_start +2):
+                for num in digits:
+                    if self.empty(row_start, col_start, num):
+                        self.grid[i][j] = num
+                        digits.remove(num)
+                        break
+        return None
+
+
     '''
     Fills the three boxes along the main diagonal of the board
     These are the boxes which start at (0,0), (3,3), and (6,6)
