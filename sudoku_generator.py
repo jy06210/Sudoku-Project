@@ -145,8 +145,8 @@ class SudokuGenerator():
 	Return: None
     '''
     def fill_box(self, row_start, col_start):
-        digits = list(range(1, 10))
-        random.randint(digits)
+        digits = list(range(0, 3))
+        random.shuffle(digits)
 
         for i in range(row_start, row_start +2):
             for j in range(col_start, col_start +2):
@@ -166,7 +166,6 @@ class SudokuGenerator():
 	Return: None
     '''
     def fill_diagonal(self):
-        testing1
         pass
 
     '''
