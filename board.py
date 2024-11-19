@@ -37,11 +37,10 @@ class Board:
     this function returns a tuple of the (row, col) of the cell which was clicked. 
     Otherwise, this function returns None.
     '''
-    def click(self, prow, pcol):
-        if prow <= 900 and pcol <= 900:
-            row = prow//100
-            col = pcol//100
-            return row, col
+    def click(self, row, col):
+        if 0 <= row < 9 and 0 <= col < 9:
+            return (row, col)
+
         return None
     '''Clears the value cell. 
     Note that the user can only remove the cell values and 
