@@ -82,9 +82,9 @@ class Board(SudokuGenerator):
         for row in range(1, 10):
             for col in range(1, 10):
                 if (row, col) in self.removed_cells_list:
-                    self.grid[row][col] = 0
+                    self.board[row][col] = 0
                 else:
-                    self.grid[row][col] = self.board[row][col]
+                    self.board[row][col] = self.board[row][col]
 
 
     '''Returns a Boolean value indicating whether the board is full or not.'''
