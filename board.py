@@ -64,7 +64,7 @@ class Board(SudokuGenerator):
     Called when the user presses the Enter key.
     '''
     def place_number(self, value):
-        pass
+        self.board[self.selected_row][self.selected_col] = value
 
     '''Resets all cells in the board to their original values 
     (0 if cleared, otherwise the corresponding digit).
