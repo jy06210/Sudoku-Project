@@ -145,7 +145,7 @@ class SudokuGenerator():
             for j in range(col_start, col_start +2):
                     num = random.randint(1,10)
 
-                    if temp in digits:
+                    if num in digits:
                         self.board[i][j] = num
                         digits.remove(num)
                     break
