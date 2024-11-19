@@ -113,5 +113,6 @@ class Board(SudokuGenerator):
     def check_board(self):
         for row in range(1, 10):
             for col in range(1, 10):
-                if self.board[row][col] == fill_values
+                if self.board[row][col] == self.fill_values():
+
 
