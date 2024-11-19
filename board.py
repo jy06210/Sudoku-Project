@@ -70,8 +70,12 @@ class Board(SudokuGenerator):
     (0 if cleared, otherwise the corresponding digit).
     '''
     def reset_to_original(self):
-        for self.board in self.removed_cells_list:
-            self.board[self.row][self.col] = 0
+        for row in range(9):
+            for col in range(9):
+                if (row, col) in self.removed_cells_list:
+                    self.grid[row][col] = 0
+                else:
+                    self.grid[row][col] = self.original_board[row][col]
 
 
     '''Returns a Boolean value indicating whether the board is full or not.'''
