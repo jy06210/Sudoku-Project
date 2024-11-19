@@ -144,14 +144,13 @@ class SudokuGenerator():
 
         for i in range(row_start, row_start +2):
             for j in range(col_start, col_start +2):
-                while (row)(col) ==0:
+                while self.board[i][j] == 0:
                     num = random.randint(1,10)
                     if num in digits:
                         self.board[i][j] = num
                         digits.remove(num)
-                    if (row)(col) != 0:
-                    break
-        return None
+                    if self.board[i][j] != 0:
+                        break
 
 
     '''
