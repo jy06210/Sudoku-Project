@@ -144,11 +144,11 @@ class SudokuGenerator():
 
         for i in range(row_start, row_start +2):
             for j in range(col_start, col_start +2):
-                    temp = random.randint(1,10)
+                    num = random.randint(1,10)
 
-                    if temp in digits:
-                        self.board[i][j] = temp
-                        digits.remove(temp)
+                    if num in digits:
+                        self.board[i][j] = num
+                        digits.remove(num)
                     break
         return None
 

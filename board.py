@@ -101,7 +101,11 @@ class Board(SudokuGenerator):
     '''Finds an empty cell and returns its row and col as a tuple (x,y).
     '''
     def find_empty(self):
-        pass
+        for row in range(1, 10):
+            for col in range(1, 10):
+                if self.grid[row][col] = 0:
+                    return (row, col)
+
 
     '''Check whether the Sudoku board is solved correctly.'''
     def check_board(self):
