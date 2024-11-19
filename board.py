@@ -4,12 +4,12 @@ from sudoku_generator import SudokuGenerator
 
 
 class Board(SudokuGenerator):
-    def __init__(self, width, height, screen, difficulty):
+    def __init__(self, width, height, screen, difficulty,row_length, removed_cells):
         self.width = width
         self.height = height
         self.screen = screen
         self.difficulty = difficulty
-
+        SudokuGenerator.__init__(self, row_length, removed_cells)
     '''Draws an outline of the Sudoku grid, with bold lines to delineate the 3x3 boxes.
        Draws every cell on this board.
    '''
