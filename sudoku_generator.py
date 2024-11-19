@@ -28,6 +28,7 @@ class SudokuGenerator():
         row_length = 9
         self.row_length = row_length
         self.removed_cells = removed_cells
+        self.removed_cells_list = []
 
         self.board =[[],[],[],[],[],[],[],[],[]]
         self.box_length = (row_length) ** .5
@@ -238,6 +239,7 @@ class SudokuGenerator():
                     continue
                 else:
                     break
+            self.removed_cells_list.append((x,y))
             self.board[x][y] = 0
 
 '''
