@@ -9,6 +9,8 @@ class Board(SudokuGenerator):
         self.height = height
         self.screen = screen
         self.difficulty = difficulty
+        self.selected_row = 0
+        self.selected_col = 0
         SudokuGenerator.__init__(self, row_length, removed_cells)
     '''Draws an outline of the Sudoku grid, with bold lines to delineate the 3x3 boxes.
        Draws every cell on this board.
@@ -103,8 +105,8 @@ class Board(SudokuGenerator):
     def find_empty(self):
         for row in range(1, 10):
             for col in range(1, 10):
-                if self.grid[row][col] = 0:
-                    return (row, col)
+                if self.board[row][col] == 0:
+                    return row, col
 
 
     '''Check whether the Sudoku board is solved correctly.'''
