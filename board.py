@@ -1,7 +1,9 @@
 import pygame
 import sudoku_generator
+from sudoku_generator import SudokuGenerator
 
-class Board:
+
+class Board(SudokuGenerator):
     def __init__(self, width, height, screen, difficulty):
         self.width = width
         self.height = height
@@ -49,7 +51,8 @@ class Board:
     sketched values that are filled by themselves.
     '''
     def clear(self):
-        pass
+        if (self.selected_row, self.selected_col) in self.removed_cells_list:
+            self.board[self.selected_row][self.selected_col] = 0
 
     '''Sets the sketched value of the current selected cell equal to the user entered value.
 	It will be displayed at the top left corner of the cell using the draw() function.
