@@ -165,8 +165,7 @@ class SudokuGenerator():
             self.fill_box(i, i)
         return None
 
-'''
-    DO NOT CHANGE
+    '''DO NOT CHANGE
     Provided for students
     Fills the remaining cells of the board
     Should be called after the diagonal boxes have been filled
@@ -175,10 +174,10 @@ class SudokuGenerator():
 	row, col specify the coordinates of the first empty (0) cell
 
 	Return:
-	boolean (whether or not we could solve the board)
-    '''
+	boolean (whether or not we could solve the board)'''
+
     def fill_remaining(self, row, col):
-        if (col >= self.row_length and row < self.row_length - 1):
+        if col >= self.row_length and row < self.row_length - 1:
             row += 1
             col = 0
         if row >= self.row_length and col >= self.row_length:
