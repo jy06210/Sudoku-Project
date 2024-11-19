@@ -74,6 +74,7 @@ class Board(SudokuGenerator):
     def place_number(self, value):
         self.board[self.selected_row][self.selected_col] = value
 
+
     '''Resets all cells in the board to their original values 
     (0 if cleared, otherwise the corresponding digit).
     '''
@@ -83,7 +84,7 @@ class Board(SudokuGenerator):
                 if (row, col) in self.removed_cells_list:
                     self.grid[row][col] = 0
                 else:
-                    self.grid[row][col] = self.original_board[row][col]
+                    self.grid[row][col] = self.board[row][col]
 
 
     '''Returns a Boolean value indicating whether the board is full or not.'''
