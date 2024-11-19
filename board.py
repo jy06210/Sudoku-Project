@@ -1,5 +1,5 @@
 import pygame
-import sudoku_generator
+from Constants import *
 from sudoku_generator import SudokuGenerator
 
 
@@ -26,7 +26,12 @@ class Board(SudokuGenerator):
                 pygame.draw.line(self.screen, (0,0,0), (i*100, 0), (i*100,900))
             else:
                 pygame.draw.line(self.screen, (0,0,0), (0, i*100), (900, i*100))
-
+        #draw numbers in cells
+        for i in range(0,10):
+            for j in range(0,10):
+                sketched_value = self.sketch(self.board[i][j])
+                self.screen.blit(sketched_value,
+                         sketched_value.get_rect(topleft=(SCREEN_SIZE // 9 * i, SCREEN_SIZE // 9 * j)))
 
     '''Marks the cell at (row, col) in the board as the current selected cell.
 	Once a cell has been selected, the user can edit its value or sketched value.
@@ -58,7 +63,10 @@ class Board(SudokuGenerator):
 	It will be displayed at the top left corner of the cell using the draw() function.
     '''
     def sketch(self, value):
-        pass
+        if value == 0:
+            return ""
+        else:
+            return value
 
     '''Sets the value of the current selected cell equal to the user entered value. 
     Called when the user presses the Enter key.
