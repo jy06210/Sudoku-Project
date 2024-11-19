@@ -139,16 +139,16 @@ class SudokuGenerator():
     '''
     def fill_box(self, row_start, col_start):
 
-        digits = list(range(1, 10))
-        random.shuffle(digits)
+        digits = [1,2,3,4,5,6,7,8,9]
 
         for i in range(row_start, row_start +2):
             for j in range(col_start, col_start +2):
-                for num in digits:
-                    if self.empty(row_start, col_start, num):
-                        self.grid[i][j] = num
+                    num = random.randint(1,10)
+
+                    if num in digits:
+                        self.board[i][j] = num
                         digits.remove(num)
-                        break
+                    break
         return None
 
 
