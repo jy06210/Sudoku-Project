@@ -1,6 +1,4 @@
 import pygame
-import sudoku_generator
-
 class Board:
     def __init__(self, width, height, screen, difficulty):
         self.width = width
@@ -13,38 +11,40 @@ class Board:
    '''
     def draw(self):
         #draw row
-        for i in range (0,9):
+        for i in range (0,10):
             if i%3!=0:
-            pygame.draw.line(self.screen, (0,0,0),(0,i*100), (900, i*100),())
+                pygame.draw.line(self.screen, (0,0,0),(0,i*100), (900, i*100))
+            else:
+                pygame.draw.line(self.screen, (0,0,0), (0, i*100), (900, i*100), (10))
+        #draw col
+        for i in range (0,10):
+            if i%3!=0:
+                pygame.draw.line(self.screen, (0,0,0), (i*100, 0), (i*100,900))
+            else:
+                pygame.draw.line(self.screen, (0,0,0), (0, i*100), (900, i*100))
+
 
     '''Marks the cell at (row, col) in the board as the current selected cell.
 	Once a cell has been selected, the user can edit its value or sketched value.
     '''
     def select(self, row, col):
-        self.selected_row = row
-        self.selected_col = col
+        pass
 
     '''If a tuple of (x,y) coordinates is within the displayed board, 
     this function returns a tuple of the (row, col) of the cell which was clicked. 
     Otherwise, this function returns None.
     '''
     def click(self, row, col):
-        if 0 <= row < 9 and 0 <= col < 9:
-            return (row, col)
-        return None
+        pass
 
     '''Clears the value cell. 
     Note that the user can only remove the cell values and 
     sketched values that are filled by themselves.
     '''
     def clear(self):
-        row, col = self.selected_row, self.selected_col
-        if self.user_filled[row][col]:
-            self.grid[row][col] = 0
-            self.user_filled[row][col] = False
-            self.update_display()
+        pass
 
-        '''Sets the sketched value of the current selected cell equal to the user entered value.
+    '''Sets the sketched value of the current selected cell equal to the user entered value.
 	It will be displayed at the top left corner of the cell using the draw() function.
     '''
     def sketch(self, value):
