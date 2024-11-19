@@ -161,9 +161,9 @@ class SudokuGenerator():
 	Return: None
     '''
     def fill_diagonal(self):
-        for i in range(0, 9, 3):
-            self.fill_box(i, i)
-        return None
+        self.fill_box(0,0)
+        self.fill_box(3,3)
+        self.fill_box(6,6)
 
     '''DO NOT CHANGE
     Provided for students
