@@ -111,5 +111,7 @@ class Board(SudokuGenerator):
 
     '''Check whether the Sudoku board is solved correctly.'''
     def check_board(self):
-        pass
+        for row in range(1, 10):
+            for col in range(1, 10):
+                if self.board[row][col] == fill_values
 
