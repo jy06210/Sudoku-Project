@@ -1,4 +1,6 @@
 import pygame
+import sudoku_generator
+
 class Board:
     def __init__(self, width, height, screen, difficulty):
         self.width = width
@@ -28,15 +30,19 @@ class Board:
 	Once a cell has been selected, the user can edit its value or sketched value.
     '''
     def select(self, row, col):
-        pass
+        self.selected_row = row
+        self.selected_col = col
 
     '''If a tuple of (x,y) coordinates is within the displayed board, 
     this function returns a tuple of the (row, col) of the cell which was clicked. 
     Otherwise, this function returns None.
     '''
-    def click(self, row, col):
-        pass
-
+    def click(self, prow, pcol):
+        if prow <= 900 and pcol <= 900:
+            row = prow//100
+            col = pcol//100
+            return row, col
+        return None
     '''Clears the value cell. 
     Note that the user can only remove the cell values and 
     sketched values that are filled by themselves.
