@@ -74,7 +74,10 @@ class Board(SudokuGenerator):
 
     '''Returns a Boolean value indicating whether the board is full or not.'''
     def is_full(self):
-        pass
+        if 0 in self.board:
+            return False
+        else:
+            return True
 
     '''Updates the underlying 2D board with the values in all cells.'''
     def update_board(self):
