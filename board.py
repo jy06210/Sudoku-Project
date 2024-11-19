@@ -78,8 +78,8 @@ class Board(SudokuGenerator):
     (0 if cleared, otherwise the corresponding digit).
     '''
     def reset_to_original(self):
-        for row in range(10):
-            for col in range(10):
+        for row in range(1, 10):
+            for col in range(1, 10):
                 if (row, col) in self.removed_cells_list:
                     self.grid[row][col] = 0
                 else:
