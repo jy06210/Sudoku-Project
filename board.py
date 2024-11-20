@@ -23,13 +23,13 @@ class Board(SudokuGenerator):
             if i%3!=0:
                 pygame.draw.line(self.screen, (0,0,0),(0,i*70), (630, i*70))
             else:
-                pygame.draw.line(self.screen, (0,0,0), (0, i*70), (630, i*70), (1))
+                pygame.draw.line(self.screen, (0,0,0), (0, i*70), (630, i*70), (10))
         #draw col
         for i in range (0,10):
             if i%3!=0:
                 pygame.draw.line(self.screen, (0,0,0), (i*70, 0), (i*70,630))
             else:
-                pygame.draw.line(self.screen, (0,0,0), (0, i*70), (630, i*70), 1)
+                pygame.draw.line(self.screen, (0,0,0), (i*70,0), (i*70,630), 10)
         #draw numbers in cells
         for i in range(0,9):
             for j in range(0,9):
