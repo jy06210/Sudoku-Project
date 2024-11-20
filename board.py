@@ -4,36 +4,39 @@ from sudoku_generator import SudokuGenerator
 
 
 class Board(SudokuGenerator):
-    def __init__(self, width, height, screen, difficulty,row_length, removed_cells):
+    def __init__(self, width, height, screen, difficulty,row_length, removed_cells, board):
         self.width = width
         self.height = height
         self.screen = screen
         self.difficulty = difficulty
         self.selected_row = 0
         self.selected_col = 0
+        self.board=board
         SudokuGenerator.__init__(self, row_length, removed_cells)
     '''Draws an outline of the Sudoku grid, with bold lines to delineate the 3x3 boxes.
        Draws every cell on this board.
    '''
     def draw(self):
+        value_font = pygame.font.Font(None, FONT)
         #draw row
         for i in range (0,10):
             if i%3!=0:
                 pygame.draw.line(self.screen, (0,0,0),(0,i*100), (900, i*100))
             else:
-                pygame.draw.line(self.screen, (0,0,0), (0, i*100), (900, i*100), (10))
+                pygame.draw.line(self.screen, (0,0,0), (0, i*100), (900, i*100), (1))
         #draw col
         for i in range (0,10):
             if i%3!=0:
                 pygame.draw.line(self.screen, (0,0,0), (i*100, 0), (i*100,900))
             else:
-                pygame.draw.line(self.screen, (0,0,0), (0, i*100), (900, i*100))
+                pygame.draw.line(self.screen, (0,0,0), (0, i*100), (900, i*100), 1)
         #draw numbers in cells
-        for i in range(0,10):
-            for j in range(0,10):
+        for i in range(0,9):
+            for j in range(0,9):
                 sketched_value = self.sketch(self.board[i][j])
-                self.screen.blit(sketched_value,
-                         sketched_value.get_rect(topleft=(SCREEN_SIZE // 9 * i, SCREEN_SIZE // 9 * j)))
+                cell_surf=value_font.render(sketched_value,0,(0,0,0))
+                cell_rect=cell_surf.get_rect(topleft=(SCREEN_SIZE // 9 * i, SCREEN_SIZE // 9 * j))
+                self.screen.blit(cell_surf,cell_rect)
 
     '''Marks the cell at (row, col) in the board as the current selected cell.
 	Once a cell has been selected, the user can edit its value or sketched value.
