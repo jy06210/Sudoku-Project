@@ -16,8 +16,8 @@ while True:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             sys.exit()
-    board = generate_sudoku(9, 30)
-    board = Board(630, 630, screen, 1, 9, 30, board)
+    sudoku_board = generate_sudoku(9, 30)
+    board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
     board.draw()
     pygame.display.flip()
 

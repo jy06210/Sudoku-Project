@@ -33,9 +33,9 @@ class Board(SudokuGenerator):
         #draw numbers in cells
         for i in range(0,9):
             for j in range(0,9):
-                sketched_value = self.sketch(self.board[i][j])
+                sketched_value=self.sketch(self.board[i][j])
                 cell_surf=value_font.render(sketched_value,0,(0,0,0))
-                cell_rect=cell_surf.get_rect(topleft=(SCREEN_SIZE // 9 * i, SCREEN_SIZE // 9 * j))
+                cell_rect=cell_surf.get_rect(center=(i * 70 + 35, j * 70 + 35))
                 self.screen.blit(cell_surf,cell_rect)
 
     '''Marks the cell at (row, col) in the board as the current selected cell.
@@ -71,7 +71,7 @@ class Board(SudokuGenerator):
         if value == 0:
             return ""
         else:
-            return value
+            return str(value)
 
     '''Sets the value of the current selected cell equal to the user entered value. 
     Called when the user presses the Enter key.
