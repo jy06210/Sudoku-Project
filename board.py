@@ -3,7 +3,7 @@ from Constants import *
 from sudoku_generator import SudokuGenerator
 
 
-class Board(SudokuGenerator):
+class Board:
     def __init__(self, width, height, screen, difficulty, row_length, removed_cells, board):
         self.width = width
         self.height = height
@@ -12,7 +12,6 @@ class Board(SudokuGenerator):
         self.selected_row = 0
         self.selected_col = 0
         self.board=board
-        SudokuGenerator.__init__(self, row_length, removed_cells)
     '''Draws an outline of the Sudoku grid, with bold lines to delineate the 3x3 boxes.
        Draws every cell on this board.
    '''
