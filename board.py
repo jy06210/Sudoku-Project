@@ -4,7 +4,7 @@ from sudoku_generator import SudokuGenerator
 
 
 class Board(SudokuGenerator):
-    def __init__(self, width, height, screen, difficulty,row_length, removed_cells, board):
+    def __init__(self, width, height, screen, difficulty, row_length, removed_cells, board):
         self.width = width
         self.height = height
         self.screen = screen
@@ -113,11 +113,9 @@ class Board(SudokuGenerator):
 
 
     '''Check whether the Sudoku board is solved correctly.'''
-    '''
-    def check_board(self):
+    '''def check_board(self):
         for row in range(1, 10):
             for col in range(1, 10):
-                if self.board[row][col] == self.fill_values():
-    '''
+                if self.board[row][col] == self.fill_values():'''
 
 
