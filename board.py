@@ -21,15 +21,15 @@ class Board(SudokuGenerator):
         #draw row
         for i in range (0,10):
             if i%3!=0:
-                pygame.draw.line(self.screen, (0,0,0),(0,i*100), (900, i*100))
+                pygame.draw.line(self.screen, (0,0,0),(0,i*70), (630, i*70))
             else:
-                pygame.draw.line(self.screen, (0,0,0), (0, i*100), (900, i*100), (1))
+                pygame.draw.line(self.screen, (0,0,0), (0, i*70), (630, i*70), (1))
         #draw col
         for i in range (0,10):
             if i%3!=0:
-                pygame.draw.line(self.screen, (0,0,0), (i*100, 0), (i*100,900))
+                pygame.draw.line(self.screen, (0,0,0), (i*70, 0), (i*70,630))
             else:
-                pygame.draw.line(self.screen, (0,0,0), (0, i*100), (900, i*100), 1)
+                pygame.draw.line(self.screen, (0,0,0), (0, i*70), (630, i*70), 1)
         #draw numbers in cells
         for i in range(0,9):
             for j in range(0,9):
@@ -50,9 +50,9 @@ class Board(SudokuGenerator):
     Otherwise, this function returns None.
     '''
     def click(self, prow, pcol):
-        if prow <= 900 and pcol <= 900:
-            row = prow//100
-            col = pcol//100
+        if prow <= 630 and pcol <= 630:
+            row = prow//70
+            col = pcol//70
             return row, col
         return None
 
@@ -113,9 +113,11 @@ class Board(SudokuGenerator):
 
 
     '''Check whether the Sudoku board is solved correctly.'''
+    '''
     def check_board(self):
         for row in range(1, 10):
             for col in range(1, 10):
                 if self.board[row][col] == self.fill_values():
+    '''
 
 
