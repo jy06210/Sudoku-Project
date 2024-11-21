@@ -116,14 +116,8 @@ class SudokuGenerator():
     '''
     def is_valid(self, row, col, num):
 
-        if row%3!=0:
-            row_start=row//3+1
-        else:
-            row_start=row//3
-        if col%3!=0:
-            col_start=col//3+1
-        else:
-            col_start=col//3
+        row_start=row//3 * 3
+        col_start=col//3 * 3
         if self.valid_in_row(row, num) and self.valid_in_col(col, num) and self.valid_in_box(row_start, col_start, num):
             return True
         return False

@@ -51,8 +51,8 @@ class Board:
     '''
     def click(self, prow, pcol):
         if prow <= 630 and pcol <= 630:
-            row = prow//70
-            col = pcol//70
+            row = prow//70 + 1
+            col = pcol//70 + 1
             return row, col
         return None
 
@@ -102,7 +102,7 @@ class Board:
     '''Updates the underlying 2D board with the values in all cells.'''
     def update_board(self,number, row, col):
         self.board[row][col]=number
-        self.draw_board()
+        self.draw()
 
 
     '''Finds an empty cell and returns its row and col as a tuple (x,y).
