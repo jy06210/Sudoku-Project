@@ -24,8 +24,20 @@ while True:
         if event.type==MOUSEBUTTONDOWN:
             x,y= event.pos
             row, col= board.click(x,y)
-            number=input("")
-            board.update_board(number, row, col)
+            if event.type==pygame.KEYDOWN:
+                if event.key==pygame.K_1:
+                    board.update(1, row, col)
+                if event.key==pygame.K_2:
+                    board.update_board(2, row, col)
+                if event.key==pygame.K_3:
+                    board.update_board(3, row, col)
+                if event.key==pygame.K_4:
+                    board.update_board(4, row, col)
+                if event.key==pygame.K_5:
+                    board.update_board(5, row, col)
+                if event.key==pygame.K_6:
+                    board.update_board(6, row, col)
+
 
 
 
