@@ -100,7 +100,9 @@ class Board:
 
     '''Updates the underlying 2D board with the values in all cells.'''
     def update_board(self):
-        pass
+        number=input("")
+        self.sketch(number)
+        draw_
 
     '''Finds an empty cell and returns its row and col as a tuple (x,y).
     '''
