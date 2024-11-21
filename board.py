@@ -99,10 +99,14 @@ class Board:
             return True
 
     '''Updates the underlying 2D board with the values in all cells.'''
-    def update_board(self):
-        number=input("")
-        self.sketch(number)
-        draw_
+    def update_board(self, number, row, col):
+        value_font = pygame.font.Font(None, FONT)
+        sketch_number=self.sketch(number)
+        cell_surf = value_font.render(sketch_number, 0, (0, 0, 0))
+        cell_rect = cell_surf.get_rect(center=(row* 70 + 35, col * 70 + 35))
+        self.screen.blit(cell_surf, cell_rect)
+
+
 
     '''Finds an empty cell and returns its row and col as a tuple (x,y).
     '''
@@ -117,6 +121,7 @@ class Board:
     '''def check_board(self):
         for row in range(1, 10):
             for col in range(1, 10):
-                if self.board[row][col] == self.fill_values():'''
+                if self.board[row][col] == self.fill_values():
+    '''
 
 

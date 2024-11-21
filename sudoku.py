@@ -1,4 +1,6 @@
 import pygame, sys
+from pygame import MOUSEBUTTONDOWN
+
 from sudoku_generator import *
 from board import *
 from cell import *
@@ -19,6 +21,13 @@ while True:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             sys.exit()
+        if event.type==MOUSEBUTTONDOWN:
+            x,y= event.pos
+            row, col= board.click(x,y)
+            number=input("")
+            board.update_board(number, row, col)
+
+
 
 
 
