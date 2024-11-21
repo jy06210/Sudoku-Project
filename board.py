@@ -11,7 +11,7 @@ class Board:
         self.difficulty = difficulty
         self.selected_row = 0
         self.selected_col = 0
-        self.board=board
+        self.board = board
     '''Draws an outline of the Sudoku grid, with bold lines to delineate the 3x3 boxes.
        Draws every cell on this board.
    '''
