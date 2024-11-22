@@ -28,7 +28,6 @@ while True:
             row, col = board.click(x,y)
             clicked = True
         if event.type==pygame.KEYDOWN and clicked:
-            print("Down")
             if event.key==pygame.K_1:
                 board.update_board(1, row, col)
                 clicked=False
@@ -71,11 +70,22 @@ while True:
         if board.board==answer:
             correct=True
         board.reset_to_original()
-        if correct:
-            print("correct")
-        else:
-            print("wrong")
         screen.fill((255, 255, 255))
+        if correct:
+            value_font = pygame.font.Font(None, FONT)
+            sketched_value="You Won!"
+            cell_surf = value_font.render(sketched_value, 0, (0, 0, 0))
+            cell_rect = cell_surf.get_rect(center=(315, 315))
+            screen.blit(cell_surf, cell_rect)
+
+        else:
+            value_font = pygame.font.Font(None, FONT)
+            sketched_value = "You lose!"
+            cell_surf = value_font.render(sketched_value, 0, (0, 0, 0))
+            cell_rect = cell_surf.get_rect(center=(315, 315))
+            screen.blit(cell_surf, cell_rect)
+
+
         pygame.display.flip()
 
     else:
@@ -85,7 +95,6 @@ while True:
         if clicked:
             board.select(row,col)
         pygame.display.flip()
-
 
 
 
