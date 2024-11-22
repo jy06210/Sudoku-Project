@@ -67,25 +67,14 @@ while True:
         board.draw_cell()
         pygame.display.flip()
         pygame.time.delay(1000)
-        if board.board==answer:
-            correct=True
+        correct = board.check_board(answer)
         board.reset_to_original()
         screen.fill((255, 255, 255))
-        if correct:
-            value_font = pygame.font.Font(None, FONT)
-            sketched_value="You Won!"
-            cell_surf = value_font.render(sketched_value, 0, (0, 0, 0))
-            cell_rect = cell_surf.get_rect(center=(315, 315))
-            screen.blit(cell_surf, cell_rect)
-
-        else:
-            value_font = pygame.font.Font(None, FONT)
-            sketched_value = "You lose!"
-            cell_surf = value_font.render(sketched_value, 0, (0, 0, 0))
-            cell_rect = cell_surf.get_rect(center=(315, 315))
-            screen.blit(cell_surf, cell_rect)
-
-
+        sketched_value = "You Won!" if correct else "You lose!"
+        value_font = pygame.font.Font(None, FONT)
+        cell_surf = value_font.render(sketched_value, 0, (0, 0, 0))
+        cell_rect = cell_surf.get_rect(center=(315, 315))
+        screen.blit(cell_surf, cell_rect)
         pygame.display.flip()
 
     else:
