@@ -31,6 +31,9 @@ class Board:
             else:
                 pygame.draw.line(self.screen, (0,0,0), (i*70,0), (i*70,630), 10)
         #draw numbers in cells
+
+    def draw_cell(self):
+        value_font = pygame.font.Font(None, FONT)
         for i in range(0,9):
             for j in range(0,9):
                 sketched_value=self.sketch(self.board[i][j])

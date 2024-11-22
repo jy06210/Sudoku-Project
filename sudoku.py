@@ -46,6 +46,10 @@ while True:
                 board.update_board(5, row, col)
             if event.key==pygame.K_6:
                 board.update_board(6, row, col)
+    screen.fill((255,255,255))
+    board.draw()
+    board.draw_cell()
+    pygame.display.flip()
 
 
 
