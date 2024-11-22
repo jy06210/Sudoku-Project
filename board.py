@@ -103,10 +103,11 @@ class Board:
 
     '''Returns a Boolean value indicating whether the board is full or not.'''
     def is_full(self):
-        if 0 in self.board:
-            return False
-        else:
-            return True
+        for row in range(9):
+            for col in range(9):
+                if self.board[row][col] == 0:
+                    return False
+        return True
 
     '''Updates the underlying 2D board with the values in all cells.'''
     def update_board(self,number, row, col):

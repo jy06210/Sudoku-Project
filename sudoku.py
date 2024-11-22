@@ -9,7 +9,7 @@ from Constants import *
 
 
 pygame.init()
-game_over=False
+game_over = False
 screen=pygame.display.set_mode((630, 700))
 pygame.display.set_caption("Sudoku")
 screen.fill((255,255,255))
@@ -17,15 +17,15 @@ sudoku_board = generate_sudoku(9, 30)
 board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
 board.draw()
 pygame.display.flip()
-clicked=False
+clicked = False
 while True:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             sys.exit()
-        if event.type==MOUSEBUTTONDOWN:
-            x,y= event.pos
-            row, col= board.click(x,y)
-            clicked=True
+        if event.type == MOUSEBUTTONDOWN and not game_over:
+            x,y = event.pos
+            row, col = board.click(x,y)
+            clicked = True
         if event.type==pygame.KEYDOWN and clicked:
             print("Down")
             if event.key==pygame.K_1:
@@ -59,16 +59,24 @@ while True:
             if event.key==pygame.K_BACKSPACE:
                 board.clear(row, col)
                 clicked = False
-            if board.is_full()==True:
-                if board.check_board():
-                    print("Yay you solved it!")
+            if board.is_full():
+                game_over = True
 
-    screen.fill((255,255,255))
-    board.draw()
-    board.draw_cell()
-    if clicked==True:
-        board.select(row,col)
-    pygame.display.flip()
+    if game_over:
+        screen.fill((255, 255, 255))
+        board.draw()
+        board.draw_cell()
+        print("Yay you solved it!")
+        pygame.time.delay(3000)
+        screen.fill((255, 255, 255))
+        pygame.display.flip()
+    else:
+        screen.fill((255,255,255))
+        board.draw()
+        board.draw_cell()
+        if clicked:
+            board.select(row,col)
+        pygame.display.flip()
 
 
 
