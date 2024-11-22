@@ -52,8 +52,12 @@ class Board:
 	Once a cell has been selected, the user can edit its value or sketched value.
     '''
     def select(self, row, col):
-        self.selected_row = row
-        self.selected_col = col
+        i=row-1
+        j=col-1
+        pygame.draw.line(self.screen, (255,0,0), (i*70,j*70),(i*70+70,j*70))
+        pygame.draw.line(self.screen, (255,0,0), (i*70,j*70+70),(i*70+70,j*70+70))
+        pygame.draw.line(self.screen, (255,0,0), (i*70,j*70),(i*70,j*70+70))
+        pygame.draw.line(self.screen, (255,0,0), (i*70+70, j*70),(i*70+70,j*70+70))
 
     '''If a tuple of (x,y) coordinates is within the displayed board, 
     this function returns a tuple of the (row, col) of the cell which was clicked. 
