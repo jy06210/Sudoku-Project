@@ -60,9 +60,15 @@ while True:
                 board.clear(row, col)
                 clicked = False
             if board.is_full():
+                screen.fill((255, 255, 255))
+                board.draw()
                 board.draw_cell()
+                pygame.time.delay(1000)
                 game_over = True
-                print("Yay you solved it!")
+                if board.check_board():
+                    print("Yay you solved it!")
+                else:
+                    print("wrong answer")
 
     if game_over:
         screen.fill((255, 255, 255))
