@@ -67,15 +67,15 @@ while True:
         board.draw_cell()
         pygame.display.flip()
         pygame.time.delay(1000)
+        correct = board.check_board()
         board.reset_to_original()
+        if correct:
+            print("correct")
+        else:
+            print("wrong")
         screen.fill((255, 255, 255))
         pygame.display.flip()
-        if board.check_board():
-            print("Yay you solved it!")
-            break
-        else:
-            print("wrong answer")
-            break
+
     else:
         screen.fill((255,255,255))
         board.draw()
