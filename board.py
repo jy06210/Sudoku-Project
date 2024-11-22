@@ -125,22 +125,36 @@ class Board:
 
 
     def valid_in_row(self, row, num):
-        if num in self.board[row]:
+        count=0
+        row=int(row)
+        for r in self.board:
+            if num in r:
+                count+=1
+        if count!=1:
             return False
-        return True
+        else:
+            return True
 
     def valid_in_col(self, col, num):
+        count = 0
         col=int(col)
         for i in range(0, 9):
             if num == self.board[i][col]:
-                return False
-        return True
+                count+=1
+        if count!=1:
+            return False
+        else:
+            return True
+
 
     def valid_in_box(self, row_start, col_start, num):
+        count=0
         for i in range(row_start, row_start+3):
             for j in range(col_start, col_start+3):
                 if num == self.board[i][j]:
-                    return False
+                    count+=1
+        if count!=1:
+            return False
         return True
 
     def is_valid(self, row, col, num):
