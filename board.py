@@ -123,11 +123,38 @@ class Board:
                     return row, col
 
 
+    def valid_in_row(self, row, num):
+        if num in self.board[row]:
+            return False
+        return True
+
+    def valid_in_col(self, col, num):
+        col=int(col)
+        for i in range(0, 9):
+            if num == self.board[i][col]:
+                return False
+        return True
+
+    def valid_in_box(self, row_start, col_start, num):
+        for i in range(row_start, row_start+3):
+            for j in range(col_start, col_start+3):
+                if num == self.board[i][j]:
+                    return False
+        return True
+
+    def is_valid(self, row, col, num):
+        row_start=row//3 * 3
+        col_start=col//3 * 3
+        if self.valid_in_row(row, num) and self.valid_in_col(col, num) and self.valid_in_box(row_start, col_start, num):
+            return True
+        return False
+
     '''Check whether the Sudoku board is solved correctly.'''
-    '''def check_board(self):
-        for row in range(1, 10):
-            for col in range(1, 10):
-                if self.board[row][col] == self.fill_values():
-        '''
+    def check_board(self):
+        for row in range(10):
+            for col in range(10):
+                if not self.is_valid(row, col, self.board[row][col]):
+                    return False
+        return True
 
 
