@@ -30,21 +30,32 @@ while True:
         if event.type==pygame.KEYDOWN and clicked:
             print("Down")
             if event.key==pygame.K_1:
-                print("Key 1 pressed")
                 board.update_board(1, row, col)
-                board.draw()
-                print(board.board)
                 clicked=False
             if event.key==pygame.K_2:
                 board.update_board(2, row, col)
+                clicked=False
             if event.key==pygame.K_3:
                 board.update_board(3, row, col)
+                clicked=False
             if event.key==pygame.K_4:
                 board.update_board(4, row, col)
+                clicked=False
             if event.key==pygame.K_5:
                 board.update_board(5, row, col)
+                clicked=False
             if event.key==pygame.K_6:
                 board.update_board(6, row, col)
+                clicked=False
+            if event.key==pygame.K_7:
+                board.update_board(7, row, col)
+                clicked=False
+            if event.key==pygame.K_8:
+                board.update_board(8, row, col)
+                clicked=False
+            if event.key==pygame.K_9:
+                board.update_board(9, row, col)
+                clicked=False
     screen.fill((255,255,255))
     board.draw()
     board.draw_cell()
