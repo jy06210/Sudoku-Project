@@ -6,7 +6,7 @@ https://www.geeksforgeeks.org/program-sudoku-generator/
 
 """
 
-class SudokuGenerator():
+class SudokuGenerator:
     '''
 	create a sudoku board - initialize class variables and set up the 2D board
 	This should initialize:
@@ -31,6 +31,7 @@ class SudokuGenerator():
 
         self.board =[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
         self.box_length = int(math.sqrt(row_length))
+        self.board_answer = []
 
 
     '''
@@ -253,6 +254,7 @@ def generate_sudoku(size, removed):
     sudoku = SudokuGenerator(size, removed)
     sudoku.fill_values()
     board = sudoku.get_board()
+    answer = board
     sudoku.remove_cells()
     board = sudoku.get_board()
-    return board
+    return board, answer

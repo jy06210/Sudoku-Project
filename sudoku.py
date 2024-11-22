@@ -67,7 +67,7 @@ while True:
         board.draw_cell()
         pygame.display.flip()
         pygame.time.delay(1000)
-        correct = board.check_board()
+        correct = board.check_board(board.answer)
         board.reset_to_original()
         if correct:
             print("correct")

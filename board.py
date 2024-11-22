@@ -151,10 +151,10 @@ class Board:
         return False
 
     '''Check whether the Sudoku board is solved correctly.'''
-    def check_board(self):
+    def check_board(self, answer):
         for row in range(10):
             for col in range(10):
-                if not self.is_valid(row, col, self.board[row][col]):
+                if self.board[row][col] != answer[row][col]:
                     return False
         return True
 
