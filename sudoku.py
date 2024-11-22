@@ -31,6 +31,7 @@ while True:
             if event.key==pygame.K_1:
                 board.update_board(1, row, col)
                 clicked=False
+
             if event.key==pygame.K_2:
                 board.update_board(2, row, col)
                 clicked=False
@@ -58,6 +59,10 @@ while True:
             if event.key==pygame.K_BACKSPACE:
                 board.clear(row, col)
                 clicked = False
+            if board.is_full()==True:
+                if board.check_board():
+                    print("Yay you solved it!")
+
     screen.fill((255,255,255))
     board.draw()
     board.draw_cell()
