@@ -111,7 +111,8 @@ class Board:
 
     '''Updates the underlying 2D board with the values in all cells.'''
     def update_board(self,number, row, col):
-        self.board[row-1][col-1] = number
+        if self.original_board[row-1][col-1]== 0:
+            self.board[row-1][col-1] = number
 
 
     '''Finds an empty cell and returns its row and col as a tuple (x,y).
