@@ -1,5 +1,6 @@
 import pygame
 from Constants import *
+import copy
 from sudoku_generator import SudokuGenerator
 
 
@@ -12,21 +13,12 @@ class Board:
         self.selected_row = 0
         self.selected_col = 0
         self.board = board
-        self.original_board=board
+        self.original_board = copy.deepcopy(board)
     '''Draws an outline of the Sudoku grid, with bold lines to delineate the 3x3 boxes.
        Draws every cell on this board.
    '''
     def draw(self):
         value_font = pygame.font.Font(None, FONT)
-        # draw red lines around cells
-        for i in range(0, 9):
-            for j in range(0, 9):
-                if self.original_board[i][j] == 0:
-                    pygame.draw.line(self.screen, (255, 0, 0), (i * 70, j * 70), (i * 70 + 70, j * 70),5)
-                    pygame.draw.line(self.screen, (255, 0, 0), (i * 70, j * 70 + 70), (i * 70 + 70, j * 70 + 70),5)
-                    pygame.draw.line(self.screen, (255, 0, 0), (i * 70, j * 70), (i * 70, j * 70 + 70),5)
-                    pygame.draw.line(self.screen, (255, 0, 0), (i * 70 + 70, j * 70), (i * 70 + 70, j * 70 + 70),5)
-
         #draw row
         for i in range (0,10):
             if i%3!=0:
@@ -39,15 +31,22 @@ class Board:
                 pygame.draw.line(self.screen, (0,0,0), (i*70, 0), (i*70,630))
             else:
                 pygame.draw.line(self.screen, (0,0,0), (i*70,0), (i*70,630), 10)
+        for i in range(0, 9):
+            for j in range(0, 9):
+                sketched_value = self.sketch(self.original_board[i][j])
+                cell_surf = value_font.render(sketched_value, 0, (0, 0, 0))
+                cell_rect = cell_surf.get_rect(center=(i * 70 + 35, j * 70 + 35))
+                self.screen.blit(cell_surf, cell_rect)
 
     def draw_cell(self):
         value_font = pygame.font.Font(None, FONT)
         for i in range(0,9):
             for j in range(0,9):
-                sketched_value=self.sketch(self.board[i][j])
-                cell_surf=value_font.render(sketched_value,0,(0,0,0))
-                cell_rect=cell_surf.get_rect(center=(i * 70 + 35, j * 70 + 35))
-                self.screen.blit(cell_surf,cell_rect)
+                if self.original_board[i][j]==0:
+                    sketched_value=self.sketch(self.board[i][j])
+                    cell_surf=value_font.render(sketched_value,0,(255,0,0))
+                    cell_rect=cell_surf.get_rect(center=(i * 70 + 35, j * 70 + 35))
+                    self.screen.blit(cell_surf,cell_rect)
 
     '''Marks the cell at (row, col) in the board as the current selected cell.
 	Once a cell has been selected, the user can edit its value or sketched value.
@@ -129,6 +128,6 @@ class Board:
         for row in range(1, 10):
             for col in range(1, 10):
                 if self.board[row][col] == self.fill_values():
-    '''
+        '''
 
 
