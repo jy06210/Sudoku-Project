@@ -33,7 +33,9 @@ while True:
             if event.key==pygame.K_1:
                 print("Key 1 pressed")
                 board.update_board(1, row, col)
+                board.draw()
                 print(board.board)
+                clicked=False
             if event.key==pygame.K_2:
                 board.update_board(2, row, col)
             if event.key==pygame.K_3:
