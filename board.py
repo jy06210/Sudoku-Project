@@ -70,9 +70,9 @@ class Board:
     Note that the user can only remove the cell values and 
     sketched values that are filled by themselves.
     '''
-    def clear(self):
-        if (self.selected_row, self.selected_col) in self.removed_cells_list:
-            self.board[self.selected_row][self.selected_col] = 0
+    def clear(self, row, col):
+        if self.original_board[row-1][col-1] == 0:
+            self.board[row-1][col-1] = 0
 
     '''Sets the sketched value of the current selected cell equal to the user entered value.
 	It will be displayed at the top left corner of the cell using the draw() function.

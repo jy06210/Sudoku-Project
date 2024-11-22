@@ -56,6 +56,9 @@ while True:
             if event.key==pygame.K_9:
                 board.update_board(9, row, col)
                 clicked=False
+            if event.key==pygame.K_BACKSPACE:
+                board.clear(row, col)
+                clicked = False
     screen.fill((255,255,255))
     board.draw()
     board.draw_cell()

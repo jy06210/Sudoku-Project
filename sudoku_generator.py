@@ -136,8 +136,8 @@ class SudokuGenerator():
 
         digits = [1,2,3,4,5,6,7,8,9]
 
-        for i in range(row_start, row_start +2):
-            for j in range(col_start, col_start +2):
+        for i in range(row_start, row_start +3):
+            for j in range(col_start, col_start +3):
                 while self.board[i][j] == 0:
                     num = random.randint(1,10)
                     if num in digits:
