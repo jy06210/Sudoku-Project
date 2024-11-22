@@ -1,7 +1,7 @@
 import pygame
 from Constants import *
 import copy
-from sudoku_generator import SudokuGenerator
+
 
 
 class Board:
