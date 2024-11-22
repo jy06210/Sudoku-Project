@@ -12,7 +12,7 @@ class Board:
         self.selected_row = 0
         self.selected_col = 0
         self.board = board
-        self.orignial_board=board
+        self.original_board=board
     '''Draws an outline of the Sudoku grid, with bold lines to delineate the 3x3 boxes.
        Draws every cell on this board.
    '''
@@ -101,8 +101,7 @@ class Board:
 
     '''Updates the underlying 2D board with the values in all cells.'''
     def update_board(self,number, row, col):
-        self.board[row][col]=number
-        self.draw()
+        self.board[row-1][col-1] = number
 
 
     '''Finds an empty cell and returns its row and col as a tuple (x,y).
