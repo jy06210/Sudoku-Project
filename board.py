@@ -18,6 +18,15 @@ class Board:
    '''
     def draw(self):
         value_font = pygame.font.Font(None, FONT)
+        # draw red lines around cells
+        for i in range(0, 9):
+            for j in range(0, 9):
+                if self.original_board[i][j] == 0:
+                    pygame.draw.line(self.screen, (255, 0, 0), (i * 70, j * 70), (i * 70 + 70, j * 70),5)
+                    pygame.draw.line(self.screen, (255, 0, 0), (i * 70, j * 70 + 70), (i * 70 + 70, j * 70 + 70),5)
+                    pygame.draw.line(self.screen, (255, 0, 0), (i * 70, j * 70), (i * 70, j * 70 + 70),5)
+                    pygame.draw.line(self.screen, (255, 0, 0), (i * 70 + 70, j * 70), (i * 70 + 70, j * 70 + 70),5)
+
         #draw row
         for i in range (0,10):
             if i%3!=0:
@@ -30,7 +39,6 @@ class Board:
                 pygame.draw.line(self.screen, (0,0,0), (i*70, 0), (i*70,630))
             else:
                 pygame.draw.line(self.screen, (0,0,0), (i*70,0), (i*70,630), 10)
-        #draw numbers in cells
 
     def draw_cell(self):
         value_font = pygame.font.Font(None, FONT)
