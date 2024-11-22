@@ -13,7 +13,7 @@ game_over = False
 screen=pygame.display.set_mode((630, 700))
 pygame.display.set_caption("Sudoku")
 screen.fill((255,255,255))
-sudoku_board, correct_board = generate_sudoku(9, 5)
+sudoku_board, correct_board = generate_sudoku(9, 3)
 answer=correct_board
 board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
 board.draw()
@@ -67,7 +67,8 @@ while True:
         board.draw_cell()
         pygame.display.flip()
         pygame.time.delay(1000)
-        correct = board.check_board(answer)
+        if board.is_full():
+            correct = board.check_board(answer)
         board.reset_to_original()
         screen.fill((255, 255, 255))
         sketched_value = "You Won!" if correct else "You lose!"
