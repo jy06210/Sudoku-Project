@@ -24,13 +24,13 @@ class Board:
             if i%3!=0:
                 pygame.draw.line(self.screen, (0,0,0),(0,i*70), (630, i*70))
             else:
-                pygame.draw.line(self.screen, (0,0,0), (0, i*70), (630, i*70), (10))
+                pygame.draw.line(self.screen, (0,0,0), (0, i*70), (630, i*70), 5)
         #draw col
         for i in range (0,10):
             if i%3!=0:
                 pygame.draw.line(self.screen, (0,0,0), (i*70, 0), (i*70,630))
             else:
-                pygame.draw.line(self.screen, (0,0,0), (i*70,0), (i*70,630), 10)
+                pygame.draw.line(self.screen, (0,0,0), (i*70,0), (i*70,630), 5)
         for i in range(0, 9):
             for j in range(0, 9):
                 sketched_value = self.sketch(self.original_board[i][j])
@@ -54,10 +54,10 @@ class Board:
     def select(self, row, col):
         i=row-1
         j=col-1
-        pygame.draw.line(self.screen, (255,0,0), (i*70,j*70),(i*70+70,j*70))
-        pygame.draw.line(self.screen, (255,0,0), (i*70,j*70+70),(i*70+70,j*70+70))
-        pygame.draw.line(self.screen, (255,0,0), (i*70,j*70),(i*70,j*70+70))
-        pygame.draw.line(self.screen, (255,0,0), (i*70+70, j*70),(i*70+70,j*70+70))
+        pygame.draw.line(self.screen, (255,0,0), (i*70,j*70),(i*70+70,j*70),5)
+        pygame.draw.line(self.screen, (255,0,0), (i*70,j*70+70),(i*70+70,j*70+70),5)
+        pygame.draw.line(self.screen, (255,0,0), (i*70,j*70),(i*70,j*70+70),5)
+        pygame.draw.line(self.screen, (255,0,0), (i*70+70, j*70),(i*70+70,j*70+70),5)
 
     '''If a tuple of (x,y) coordinates is within the displayed board, 
     this function returns a tuple of the (row, col) of the cell which was clicked. 
@@ -98,12 +98,7 @@ class Board:
     (0 if cleared, otherwise the corresponding digit).
     '''
     def reset_to_original(self):
-        for row in range(1, 10):
-            for col in range(1, 10):
-                if (row, col) in self.removed_cells_list:
-                    self.board[row][col] = 0
-                else:
-                    self.board[row][col] = self.board[row][col]
+        self.board=copy.deepcopy(self.original_board)
 
 
     '''Returns a Boolean value indicating whether the board is full or not.'''

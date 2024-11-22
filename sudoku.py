@@ -25,7 +25,6 @@ while True:
         if event.type==MOUSEBUTTONDOWN:
             x,y= event.pos
             row, col= board.click(x,y)
-            print(row, col)
             clicked=True
         if event.type==pygame.KEYDOWN and clicked:
             print("Down")
@@ -62,6 +61,8 @@ while True:
     screen.fill((255,255,255))
     board.draw()
     board.draw_cell()
+    if clicked==True:
+        board.select(row,col)
     pygame.display.flip()
 
 
