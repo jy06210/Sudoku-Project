@@ -13,7 +13,7 @@ game_over = False
 screen=pygame.display.set_mode((630, 700))
 pygame.display.set_caption("Sudoku")
 screen.fill((255,255,255))
-sudoku_board = generate_sudoku(9, 30)
+sudoku_board = generate_sudoku(9, 5)
 board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
 board.draw()
 pygame.display.flip()
@@ -60,21 +60,22 @@ while True:
                 board.clear(row, col)
                 clicked = False
             if board.is_full():
-                screen.fill((255, 255, 255))
-                board.draw()
-                board.draw_cell()
-                pygame.time.delay(1000)
                 game_over = True
-                if board.check_board():
-                    print("Yay you solved it!")
-                else:
-                    print("wrong answer")
+
 
     if game_over:
         board.draw_cell()
         pygame.display.flip()
+        pygame.time.delay(1000)
+        board.reset_to_original()
         screen.fill((255, 255, 255))
         pygame.display.flip()
+        if board.check_board():
+            print("Yay you solved it!")
+            break
+        else:
+            print("wrong answer")
+            break
     else:
         screen.fill((255,255,255))
         board.draw()
