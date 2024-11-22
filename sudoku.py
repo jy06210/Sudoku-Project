@@ -71,6 +71,8 @@ while True:
                     print("wrong answer")
 
     if game_over:
+        board.draw_cell()
+        pygame.display.flip()
         screen.fill((255, 255, 255))
         pygame.display.flip()
     else:
