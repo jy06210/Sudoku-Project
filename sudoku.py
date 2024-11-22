@@ -19,6 +19,7 @@ board.draw()
 pygame.display.flip()
 clicked=False
 while True:
+    board.draw()
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             sys.exit()

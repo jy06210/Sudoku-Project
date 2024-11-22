@@ -100,7 +100,7 @@ class Board:
             return True
 
     '''Updates the underlying 2D board with the values in all cells.'''
-    def update_board(self,number, row, col):
+    def update_board(self, number, row, col):
         self.board[row][col]=number
         self.draw()
 
