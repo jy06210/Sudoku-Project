@@ -1,6 +1,6 @@
 import pygame, sys
 from pygame import MOUSEBUTTONDOWN
-
+from BUTT import *
 from sudoku_generator import *
 from board import *
 from cell import *
@@ -31,7 +31,6 @@ while True:
             if event.key==pygame.K_1:
                 board.update_board(1, row, col)
                 clicked=False
-
             if event.key==pygame.K_2:
                 board.update_board(2, row, col)
                 clicked=False
@@ -61,6 +60,11 @@ while True:
                 clicked = False
             if board.is_full():
                 game_over = True
+
+        if event.type == MOUSEBUTTONDOWN:
+            if butt_rect1.collidepoint(event.pos):
+                board.reset_to_original()
+            pygame.display.update()
 
 
     if game_over:
