@@ -63,12 +63,19 @@ class Board:
     this function returns a tuple of the (row, col) of the cell which was clicked. 
     Otherwise, this function returns None.
     '''
+    # def click(self, prow, pcol):
+    #     if prow <= 630 and pcol <= 630:
+    #         row = prow//70 + 1
+    #         col = pcol//70 + 1
+    #         return row, col
+    #     return None
     def click(self, prow, pcol):
-        if prow <= 630 and pcol <= 630:
-            row = prow//70 + 1
-            col = pcol//70 + 1
+        """Determine the row and column based on the click position."""
+        if 0 <= prow < 630 and 0 <= pcol < 630:  # Ensure click is within bounds
+            row = prow // 70 +1 # Integer division to get the row
+            col = pcol // 70 +1# Integer division to get the column
             return row, col
-        return None
+        return None  # Return None if the click is out of bounds
 
     '''Clears the value cell. 
     Note that the user can only remove the cell values and 
