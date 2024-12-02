@@ -106,16 +106,19 @@ from cell import *
 from Constants import *
 from Home_BUTTon import *
 
+# Initialize Pygame
 pygame.init()
 
+# Game variables
 game_over = False
 screen = pygame.display.set_mode((630, 700))
 pygame.display.set_caption("Sudoku")
 
+# Create Sudoku board and reset button
 sudoku_board, correct_board = generate_sudoku(9, 6)
 answer = correct_board
 board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
-butt1_surface, butt_rect1 = create_reset_button()
+butt1_surface, butt_rect1 = create_reset_button() # Create reset button
 butt2_surface, butt_rect2 = create_restart_button()
 butt3_surface, butt_rect3 = create_exit_button()
 button1_surface, button_rectangle1 = create_easy_button()
@@ -127,29 +130,72 @@ button5_surface, button_rectangle5 = create_restart2_button()
 start_screen=True
 clicked = False
 while True:
+    # Event handling
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-        if event.type == MOUSEBUTTONDOWN:
+        if start_screen:
+            screen.fill((255, 255, 255))
+            background = pygame.image.load("Untitled design.png")
+            screen.blit(background, background.get_rect(topleft=(0, 0)))
+            sketched_value = "Welcome to Sudoku"
+            value_font = pygame.font.Font(None, 80)
+            cell_surf = value_font.render(sketched_value, 0, (255, 255, 255))
+            cell_rect = cell_surf.get_rect(center=(315, 240))
+            screen.blit(cell_surf, cell_rect)
+            sketched_value = "Select Game Mode:"
+            value_font = pygame.font.Font(None, 80)
+            cell_surf = value_font.render(sketched_value, 0, (255, 255, 255))
+            cell_rect = cell_surf.get_rect(center=(315, 315))
+            screen.blit(cell_surf, cell_rect)
+            screen.blit(button1_surface, button_rectangle1.topleft)
+            screen.blit(button2_surface, button_rectangle2.topleft)
+            screen.blit(button3_surface, button_rectangle3.topleft)
+            pygame.display.flip()
+
+            if event.type == MOUSEBUTTONDOWN:
+                if button_rectangle1.collidepoint(event.pos):
+                    num_removed = 30  # Easy
+                    start_screen = False
+                    sudoku_board, correct_board = generate_sudoku(9, num_removed)
+                    answer = correct_board
+                    board = Board(630, 630, screen, 1, 9, num_removed, sudoku_board)
+                elif button_rectangle2.collidepoint(event.pos):
+                    num_removed = 40  # Medium
+                    start_screen = False
+                    sudoku_board, correct_board = generate_sudoku(9, num_removed)
+                    answer = correct_board
+                    board = Board(630, 630, screen, 1, 9, num_removed, sudoku_board)
+                elif button_rectangle3.collidepoint(event.pos):
+                    num_removed = 50  # Hard
+                    start_screen = False
+                    sudoku_board, correct_board = generate_sudoku(9, num_removed)
+                    answer = correct_board
+                    board = Board(630, 630, screen, 1, 9, num_removed, sudoku_board)
+
+        if event.type == MOUSEBUTTONDOWN and not start_screen:
+            #Handle reset button click
             if butt_rect1.collidepoint(event.pos):
                 board.reset_to_original()
                 clicked = False
+            #Handle restart button click
             elif butt_rect2.collidepoint(event.pos):
                 start_screen=True
                 # sudoku_board, correct_board = generate_sudoku(9, 6)
                 # answer = correct_board
                 # board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
                 # clicked = False
+            # Handle board cell clicks
             elif butt_rect3.collidepoint(event.pos):
                 sys.exit()
             elif not game_over:
                 x, y = event.pos
-                result = board.click(x, y)
+                result = board.click(x, y)  # Call the click method
                 if result is not None:
                     row, col = result
                     clicked = True
 
-        if event.type == pygame.KEYDOWN and clicked:
+        if event.type == pygame.KEYDOWN and clicked and not start_screen:
             if event.key == pygame.K_1:
                 board.update_board(1, row, col)
                 clicked = False
@@ -183,6 +229,26 @@ while True:
             if board.is_full():
                 game_over = True
 
+    # Game over logic
+        if game_over and not start_screen:
+            board.draw_cell()
+            pygame.display.flip()
+            pygame.time.delay(1000)
+            if board.is_full():
+                correct = board.check_board(answer)
+            board.reset_to_original()
+            screen.fill((255, 255, 255))
+            sketched_value = "Game Won!" if correct else "Game Over :(!"
+            sketched_value = "Game Won!" if correct else "Game Lose!"
+            value_font = pygame.font.Font(None, FONT)
+            cell_surf = value_font.render(sketched_value, 0, (0, 0, 0))
+            cell_rect = cell_surf.get_rect(center=(315, 315))
+            screen.blit(cell_surf, cell_rect)
+            if sketched_value == "Game Won!":
+                screen.blit(button4_surface, button_rectangle4.topleft)
+            else:
+                screen.blit(button5_surface, button_rectangle5.topleft)
+            pygame.display.flip()
     if game_over:
         board.draw_cell()
         pygame.display.flip()
@@ -235,21 +301,15 @@ while True:
     #             num_removed = 50
 
 
-        # Regular game drawing
-        if event.type == MOUSEBUTTONDOWN:
-            if button_rectangle1.collidepoint(event.pos):
-                num_removed = 30
-            elif button_rectangle2.collidepoint(event.pos):
-                num_removed = 40
-            elif button_rectangle3.collidepoint(event.pos):
-                num_removed = 50
-    else:
-        screen.fill((255, 255, 255))
-        board.draw()
-        draw_reset_button(screen, butt1_surface, butt_rect1)
-        draw_restart_button(screen, butt2_surface, butt_rect2)
-        draw_exit_button(screen, butt3_surface, butt_rect3)
-        board.draw_cell()
-        if clicked:
-            board.select(row, col)
-        pygame.display.flip()
+            # Regular game drawing
+        else:
+            if not start_screen:
+                screen.fill((255, 255, 255))  # Clear the screen
+                board.draw()                  # Draw the Sudoku board
+                draw_reset_button(screen, butt1_surface, butt_rect1)  # Draw the reset button
+                draw_restart_button(screen, butt2_surface, butt_rect2)# **Draw the restart button**
+                draw_exit_button(screen, butt3_surface, butt_rect3)
+                board.draw_cell()             # Highlight selected cell
+                if clicked:
+                    board.select(row, col)
+                pygame.display.flip()
