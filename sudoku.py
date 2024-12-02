@@ -201,7 +201,8 @@ while True:
         screen.fill((255, 255, 255))
         sketched_value = "Game Won!" if correct else "Game Over :(!"
         sketched_value = "Game Won!" if correct else "Game Lose!"
-        value_font = pygame.font.Font(None, FONT)
+        fontty = 100
+        value_font = pygame.font.Font(None, fontty)
         cell_surf = value_font.render(sketched_value, 0, (0, 0, 0))
         cell_rect = cell_surf.get_rect(center=(315, 315))
         screen.blit(cell_surf, cell_rect)
