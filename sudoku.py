@@ -122,7 +122,9 @@ board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
 butt1_surface, butt_rect1 = create_reset_button() # Create reset button
 butt2_surface, butt_rect2 = create_restart_button()
 butt3_surface, butt_rect3 = create_exit_button()
+button1_surface, button_rectangle1 = create_easy_button()
 button2_surface, button_rectangle2 = create_medium_button()
+
 
 start_screen=True
 clicked = False
@@ -216,10 +218,14 @@ while True:
         cell_surf = value_font.render(sketched_value, 0, (255, 255, 255))
         cell_rect = cell_surf.get_rect(center=(315, 315))
         screen.blit(cell_surf, cell_rect)
+        screen.blit(button1_surface, button_rectangle1.topleft)
         screen.blit(button2_surface, button_rectangle2.topleft)
         pygame.display.flip()
-        #screen.blit(button2_surface, button_rectangle2)
-
+        if event.type == MOUSEBUTTONDOWN:
+            if button_rectangle1.collidepoint(event.pos):
+                num_removed = 30
+            elif button_rectangle2.collidepoint(event.pos):
+                num_removed = 40
 
 
         # Regular game drawing
