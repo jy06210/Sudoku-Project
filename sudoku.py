@@ -199,11 +199,14 @@ while True:
         cell_rect = cell_surf.get_rect(center=(315, 315))
         screen.blit(cell_surf, cell_rect)
         if sketched_value == "Game Won!":
-            screen.blit(button4_surface, button_rectangle4)
-            sys.exit()
+            screen.blit(button4_surface, button_rectangle4.topleft)
+            if event.type == MOUSEBUTTONDOWN:
+            if button_rectangle4.collidepoint(event.pos):
+                sys.exit()
         else:
-            screen.blit(button5_surface, button_rectangle5)
-            start_screen = True
+            screen.blit(button5_surface, button_rectangle5.topleft)
+            if button_rectangle5.collidepoint(event.pos):
+                start_screen = True
         pygame.display.flip()
     # elif start_screen:
     #     screen.fill((255,255,255))
