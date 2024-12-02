@@ -205,7 +205,7 @@ while True:
         cell_surf = value_font.render(sketched_value, 0, (0, 0, 0))
         cell_rect = cell_surf.get_rect(center=(315, 315))
         screen.blit(cell_surf, cell_rect)
-        if skecthed_value == "Game Won!":
+        if sketched_value == "Game Won!":
             screen.blit(button4_surface, button_rectangle4.topleft)
         else:
             screen.blit(button5_surface, button_rectangle5.topleft)
