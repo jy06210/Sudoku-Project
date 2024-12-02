@@ -216,8 +216,9 @@ while True:
         cell_surf = value_font.render(sketched_value, 0, (255, 255, 255))
         cell_rect = cell_surf.get_rect(center=(315, 315))
         screen.blit(cell_surf, cell_rect)
+        screen.blit(button2_surface, button_rectangle2.topleft)
         pygame.display.flip()
-        screen.blit(button2_surface, button_rectangle2)
+        #screen.blit(button2_surface, button_rectangle2)
 
 
 
