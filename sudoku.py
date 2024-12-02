@@ -201,6 +201,8 @@ while True:
         pygame.display.flip()
     elif start_screen:
         screen.fill((255,255,255))
+        background=pygame.image.load("final pic.png")
+        screen.blit(background, background.get_rect(topleft=(0,0)))
         sketched_value="Welcome to Sudoku"
         value_font=pygame.font.Font(None, 80)
         cell_surf=value_font.render(sketched_value, 0, (0, 0, 0))
