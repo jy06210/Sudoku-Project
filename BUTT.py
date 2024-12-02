@@ -1,31 +1,3 @@
-# import pygame
-# from Constants import *
-# from sudoku import *
-# from sudoku_generator import *
-#
-#
-# butt_font = pygame.font.Font(None, FONT)
-#
-# butt1_surface = pygame.Surface((80, 30))
-#
-# text_butt1 = butt_font.render("RESET", True, (0, 0, 0))
-#
-# text_rect1 = text_butt1.get_rect1(center=(butt1_surface.get_width() / 2, butt1_surface.get_height() / 2))
-#
-# butt1_surface.fill(255, 192, 203)
-# butt1_surface.blit(text_butt1, text_rect1)
-#
-# butt_rect1 = pygame.Rect(65, 650, 80, 30)
-#
-# screen.blit(butt1_surface, (butt_rect1.x, butt_rect1.y))
-#
-# running = True
-# while running:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             running = False
-#
-# pygame.quit()
 
 import pygame
 
@@ -34,7 +6,7 @@ FONT = 25
 def create_reset_button():
     butt_font = pygame.font.Font(None, FONT)
     butt1_surface = pygame.Surface((80, 30))
-    butt1_surface.fill((255, 192, 203))  # Pink button background
+    butt1_surface.fill((255, 192, 203))
 
     text_butt1 = butt_font.render("RESET", True, (0, 0, 0))
     text_rect1 = text_butt1.get_rect(center=(butt1_surface.get_width() / 2, butt1_surface.get_height() / 2))
