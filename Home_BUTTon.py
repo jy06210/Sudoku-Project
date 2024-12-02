@@ -85,7 +85,7 @@ def create_restart2_button():
     button5_surface.blit(text_button5, text_rectangle5)
 
     # Define the button rectangle
-    button_rectangle5 = pygame.Rect(275, 650, 80, 30)
+    button_rectangle5 = pygame.Rect(275, 650, 100, 75)
 
     return button5_surface, button_rectangle5
 
