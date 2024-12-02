@@ -105,6 +105,7 @@ from sudoku_generator import *
 from board import *
 from cell import *
 from Constants import *
+from Home_BUTTon import *
 
 # Initialize Pygame
 pygame.init()
@@ -121,6 +122,8 @@ board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
 butt1_surface, butt_rect1 = create_reset_button() # Create reset button
 butt2_surface, butt_rect2 = create_restart_button()
 butt3_surface, butt_rect3 = create_exit_button()
+button2_surface, button_rectangle2 = create_medium_button()
+
 start_screen=True
 clicked = False
 while True:
@@ -129,11 +132,11 @@ while True:
         if event.type == pygame.QUIT:
             sys.exit()
         if event.type == MOUSEBUTTONDOWN:
-            # Handle reset button click
+            #Handle reset button click
             if butt_rect1.collidepoint(event.pos):
                 board.reset_to_original()
                 clicked = False
-            # Handle restart button click
+            #Handle restart button click
             elif butt_rect2.collidepoint(event.pos):
                 # Logic for restarting the game
                 sudoku_board, correct_board = generate_sudoku(9, 6)
@@ -214,8 +217,11 @@ while True:
         cell_rect = cell_surf.get_rect(center=(315, 315))
         screen.blit(cell_surf, cell_rect)
         pygame.display.flip()
+        screen.blit(button2_surface, button_rectangle2)
 
-    # Regular game drawing
+
+
+        # Regular game drawing
     else:
         screen.fill((255, 255, 255))  # Clear the screen
         board.draw()                  # Draw the Sudoku board
