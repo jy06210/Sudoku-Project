@@ -138,6 +138,56 @@ while True:
             else:
                 screen.blit(button5_surface, button_rectangle5.topleft)
             pygame.display.flip()
+    if game_over:
+        board.draw_cell()
+        pygame.display.flip()
+        pygame.time.delay(1000)
+        if board.is_full():
+            correct = board.check_board(answer)
+        board.reset_to_original()
+        screen.fill((255, 255, 255))
+        background = pygame.image.load("Untitled design.png")
+        sketched_value = "Game Won!" if correct else "Game Over :(!"
+        fontty = 100
+        value_font = pygame.font.Font(None, fontty)
+        cell_surf = value_font.render(sketched_value, 0, (0, 0, 0))
+        cell_rect = cell_surf.get_rect(center=(315, 315))
+        screen.blit(cell_surf, cell_rect)
+        if sketched_value == "Game Won!":
+            screen.blit(button4_surface, button_rectangle4.topleft)
+            if event.type == MOUSEBUTTONDOWN:
+                if button_rectangle4.collidepoint(event.pos):
+                    sys.exit()
+        else:
+            screen.blit(button5_surface, button_rectangle5.topleft)
+            if button_rectangle5.collidepoint(event.pos):
+                start_screen = True
+        pygame.display.flip()
+    elif start_screen:
+        screen.fill((255,255,255))
+        background=pygame.image.load("Untitled design.png")
+        screen.blit(background, background.get_rect(topleft=(0,0)))
+        sketched_value="Welcome to Sudoku"
+        value_font=pygame.font.Font(None, 80)
+        cell_surf=value_font.render(sketched_value, 0, (255, 255, 255))
+        cell_rect=cell_surf.get_rect(center=(315,240))
+        screen.blit(cell_surf, cell_rect)
+        sketched_value = "Select Game Mode:"
+        value_font = pygame.font.Font(None, 80)
+        cell_surf = value_font.render(sketched_value, 0, (255, 255, 255))
+        cell_rect = cell_surf.get_rect(center=(315, 315))
+        screen.blit(cell_surf, cell_rect)
+        screen.blit(button1_surface, button_rectangle1.topleft)
+        screen.blit(button2_surface, button_rectangle2.topleft)
+        screen.blit(button3_surface, button_rectangle3.topleft)
+        pygame.display.flip()
+        if event.type == MOUSEBUTTONDOWN:
+            if button_rectangle1.collidepoint(event.pos):
+                num_removed = 30
+            elif button_rectangle2.collidepoint(event.pos):
+                num_removed = 40
+            elif button_rectangle3.collidepoint(event.pos):
+                num_removed = 50
 
         else:
             if not start_screen:
