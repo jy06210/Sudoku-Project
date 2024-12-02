@@ -17,7 +17,7 @@ def create_easy_button():
     button1_surface.blit(text_button1, text_rectangle1)
 
     # Define the button rectangle for interaction
-    button_rectangle1 = pygame.Rect(157.5, 405, 100, 50)
+    button_rectangle1 = pygame.Rect(130, 405, 100, 50)
 
 
     return button1_surface, button_rectangle1
