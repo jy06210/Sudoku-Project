@@ -75,7 +75,8 @@ def create_exit2_button():
     return button4_surface, button_rectangle4
 
 def create_restart2_button():
-    button5_font = pygame.font.Font(None, FONT)
+    fonter = 20
+    button5_font = pygame.font.Font(None, fonter)
     button5_surface = pygame.Surface((120, 60))
     button5_surface.fill((255, 192, 203))  # Pink button background
 
