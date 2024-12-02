@@ -221,6 +221,7 @@ while True:
         screen.blit(cell_surf, cell_rect)
         screen.blit(button1_surface, button_rectangle1.topleft)
         screen.blit(button2_surface, button_rectangle2.topleft)
+        screen.blit(button3_surface, button_rectangle3.topleft)
         pygame.display.flip()
         if event.type == MOUSEBUTTONDOWN:
             if button_rectangle1.collidepoint(event.pos):
