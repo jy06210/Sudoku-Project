@@ -148,6 +148,7 @@ while True:
                 if event.type == MOUSEBUTTONDOWN:
                     if button_rectangle5.collidepoint(event.pos):
                         start_screen = True
+                break
             pygame.display.flip()
 
         else:
