@@ -59,3 +59,37 @@ def create_hard_button():
 
 
 
+def create_exit2_button():
+    button4_font = pygame.font.Font(None, FONT)
+    button4_surface = pygame.Surface((150, 100))
+    button4_surface.fill((255, 192, 203))  # Pink button background
+
+    # Render the "RESET" text
+    text_button4 = button4_font.render("EXIT", True, (0, 0, 0))  # Black text
+    text_rectangle4 = text_button4.get_rect(center=(button4_surface.get_width() / 2, button4_surface.get_height() / 2))
+    button4_surface.blit(text_button4, text_rectangle4)
+
+
+    button_rectangle4 = pygame.Rect(315, 500, 150, 100)
+
+    return button4_surface, button_rectangle4
+
+def create_restart2_button():
+    button5_font = pygame.font.Font(None, FONT)
+    button5_surface = pygame.Surface((80, 30))
+    button5_surface.fill((255, 192, 203))  # Pink button background
+
+    # Render the "RESET" text
+    text_button5 = button5_font.render("RESTART", True, (0, 0, 0))  # Black text
+    text_rectangle5 = text_button5.get_rect(center=(button5_surface.get_width() / 2, button5_surface.get_height() / 2))
+    button5_surface.blit(text_button5, text_rectangle5)
+
+    # Define the button rectangle
+    button_rectangle5 = pygame.Rect(275, 650, 80, 30)
+
+    return button5_surface, button_rectangle5
+
+
+
+
+
