@@ -124,6 +124,7 @@ butt2_surface, butt_rect2 = create_restart_button()
 butt3_surface, butt_rect3 = create_exit_button()
 button1_surface, button_rectangle1 = create_easy_button()
 button2_surface, button_rectangle2 = create_medium_button()
+button3_surface, button_rectangle3 = create_hard_button()
 
 
 start_screen=True
@@ -226,6 +227,8 @@ while True:
                 num_removed = 30
             elif button_rectangle2.collidepoint(event.pos):
                 num_removed = 40
+            elif button_rectangle3.collidepoint(event.pos):
+                num_removed = 50
 
 
         # Regular game drawing
