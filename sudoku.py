@@ -16,7 +16,7 @@ pygame.display.set_caption("Sudoku")
 sudoku_board, correct_board = generate_sudoku(9, 6)
 answer = correct_board
 board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
-butt1_surface, butt_rect1 = create_reset_button() # Create reset button
+butt1_surface, butt_rect1 = create_reset_button()
 butt2_surface, butt_rect2 = create_restart_button()
 butt3_surface, butt_rect3 = create_exit_button()
 button1_surface, button_rectangle1 = create_easy_button()
@@ -140,9 +140,6 @@ while True:
                 if event.type==MOUSEBUTTONDOWN:
                     if button_rectangle4.collidepoint(event.pos):
                         sys.exit()
-
-
-
             else:
                 screen.blit(button5_surface, button_rectangle5.topleft)
                 if event.type == MOUSEBUTTONDOWN:
