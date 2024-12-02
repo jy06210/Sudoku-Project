@@ -52,7 +52,7 @@ def create_hard_button():
     button3_surface.blit(text_button3, text_rectangle3)
 
     # Define the button rectangle for interaction
-    button_rectangle3 = pygame.Rect(472.5, 405, 100, 50)
+    button_rectangle3 = pygame.Rect(400, 405, 100, 50)
 
 
     return button3_surface, button_rectangle3
