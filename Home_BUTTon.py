@@ -70,7 +70,7 @@ def create_exit2_button():
     button4_surface.blit(text_button4, text_rectangle4)
 
 
-    button_rectangle4 = pygame.Rect(300, 400, 150, 100)
+    button_rectangle4 = pygame.Rect(250, 360, 150, 100)
 
     return button4_surface, button_rectangle4
 
