@@ -89,31 +89,32 @@ while True:
         if event.type == pygame.KEYDOWN and clicked and not start_screen:
             if event.key == pygame.K_1:
                 board.update_board(1, row, col)
-
+                clicked=False
             elif event.key == pygame.K_2:
                 board.update_board(2, row, col)
-
+                clicked=False
             elif event.key == pygame.K_3:
                 board.update_board(3, row, col)
+                clicked=False
             elif event.key == pygame.K_4:
                 board.update_board(4, row, col)
 
-
+                clicked=False
             elif event.key == pygame.K_5:
                 board.update_board(5, row, col)
-
+                clicked=False
             elif event.key == pygame.K_6:
                 board.update_board(6, row, col)
-
+                clicked=False
             elif event.key == pygame.K_7:
                 board.update_board(7, row, col)
-
+                clicked=False
             elif event.key == pygame.K_8:
                 board.update_board(8, row, col)
-
+                clicked=False
             elif event.key == pygame.K_9:
                 board.update_board(9, row, col)
-
+                clicked=False
             elif event.key == pygame.K_BACKSPACE:
                 board.clear(row, col)
 
@@ -123,7 +124,7 @@ while True:
         if game_over and not start_screen and not clicked:
             board.draw_cell()
             pygame.display.flip()
-            pygame.time.delay(1000)
+            pygame.time.delay(800)
             if board.is_full():
                 correct = board.check_board(answer)
             board.reset_to_original()
@@ -136,12 +137,17 @@ while True:
             screen.blit(cell_surf, cell_rect)
             if sketched_value == "Game Won!":
                 screen.blit(button4_surface, button_rectangle4.topleft)
-                if event.type == MOUSEBUTTONDOWN:
+                if event.type==MOUSEBUTTONDOWN:
                     if button_rectangle4.collidepoint(event.pos):
-                        start_screen = True
+                        sys.exit()
+
+
 
             else:
                 screen.blit(button5_surface, button_rectangle5.topleft)
+                if event.type == MOUSEBUTTONDOWN:
+                    if button_rectangle5.collidepoint(event.pos):
+                        start_screen = True
             pygame.display.flip()
 
         else:
