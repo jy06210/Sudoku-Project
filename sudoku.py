@@ -121,7 +121,7 @@ board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
 butt1_surface, butt_rect1 = create_reset_button() # Create reset button
 butt2_surface, butt_rect2 = create_restart_button()
 butt3_surface, butt_rect3 = create_exit_button()
-
+start_screen=True
 clicked = False
 while True:
     # Event handling
@@ -195,6 +195,19 @@ while True:
         screen.fill((255, 255, 255))
         sketched_value = "You Won!" if correct else "You Lose!"
         value_font = pygame.font.Font(None, FONT)
+        cell_surf = value_font.render(sketched_value, 0, (0, 0, 0))
+        cell_rect = cell_surf.get_rect(center=(315, 315))
+        screen.blit(cell_surf, cell_rect)
+        pygame.display.flip()
+    elif start_screen:
+        screen.fill((255,255,255))
+        sketched_value="Welcome to Sudoku"
+        value_font=pygame.font.Font(None, 80)
+        cell_surf=value_font.render(sketched_value, 0, (0, 0, 0))
+        cell_rect=cell_surf.get_rect(center=(315,100))
+        screen.blit(cell_surf, cell_rect)
+        sketched_value = "Select Game Mode:"
+        value_font = pygame.font.Font(None, 80)
         cell_surf = value_font.render(sketched_value, 0, (0, 0, 0))
         cell_rect = cell_surf.get_rect(center=(315, 315))
         screen.blit(cell_surf, cell_rect)
