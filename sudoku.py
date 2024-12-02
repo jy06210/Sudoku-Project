@@ -95,9 +95,8 @@
 # #         if clicked:
 # #             board.select(row,col)
 # #         pygame.display.flip()
-# #
-# #
-# #
+
+
 import pygame, sys
 from pygame import MOUSEBUTTONDOWN
 from BUTT import create_reset_button, draw_reset_button, create_restart_button, draw_restart_button, draw_exit_button, create_exit_button
@@ -125,7 +124,8 @@ butt3_surface, butt_rect3 = create_exit_button()
 button1_surface, button_rectangle1 = create_easy_button()
 button2_surface, button_rectangle2 = create_medium_button()
 button3_surface, button_rectangle3 = create_hard_button()
-
+button4_surface, button_rectangle4 = create_exit2_button()
+button5_surface, button_rectangle5 = create_restart2_button()
 
 start_screen=True
 clicked = False
@@ -199,11 +199,16 @@ while True:
             correct = board.check_board(answer)
         board.reset_to_original()
         screen.fill((255, 255, 255))
-        sketched_value = "You Won!" if correct else "You Lose!"
+        sketched_value = "Game Won!" if correct else "Game Over :(!"
+        sketched_value = "Game Won!" if correct else "Game Lose!"
         value_font = pygame.font.Font(None, FONT)
         cell_surf = value_font.render(sketched_value, 0, (0, 0, 0))
         cell_rect = cell_surf.get_rect(center=(315, 315))
         screen.blit(cell_surf, cell_rect)
+        if sketched_value == "Game Won!":
+            screen.blit(button4_surface, button_rectangle4.topleft)
+        else:
+            screen.blit(button5_surface, button_rectangle5.topleft)
         pygame.display.flip()
     elif start_screen:
         screen.fill((255,255,255))
