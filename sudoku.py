@@ -141,11 +141,11 @@ while True:
                 clicked = False
             #Handle restart button click
             elif butt_rect2.collidepoint(event.pos):
-                # Logic for restarting the game
-                sudoku_board, correct_board = generate_sudoku(9, 6)
-                answer = correct_board
-                board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
-                clicked = False
+                start_screen=True
+                # sudoku_board, correct_board = generate_sudoku(9, 6)
+                # answer = correct_board
+                # board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
+                # clicked = False
             # Handle board cell clicks
             elif butt_rect3.collidepoint(event.pos):
                 sys.exit()
