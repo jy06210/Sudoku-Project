@@ -114,52 +114,20 @@ pygame.init()
 game_over = False
 screen = pygame.display.set_mode((630, 700))
 pygame.display.set_caption("Sudoku")
-start_screen=True
+
+# Create Sudoku board and reset button
+sudoku_board, correct_board = generate_sudoku(9, 6)
+answer = correct_board
+board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
 butt1_surface, butt_rect1 = create_reset_button() # Create reset button
 butt2_surface, butt_rect2 = create_restart_button()
 butt3_surface, butt_rect3 = create_exit_button()
 button1_surface, button_rectangle1 = create_easy_button()
 button2_surface, button_rectangle2 = create_medium_button()
 button3_surface, button_rectangle3 = create_hard_button()
-while True:
-    for event in pygame.event.get():
-        if start_screen:
-            screen.fill((255, 255, 255))
-            background = pygame.image.load("Untitled design.png")
-            screen.blit(background, background.get_rect(topleft=(0, 0)))
-            sketched_value = "Welcome to Sudoku"
-            value_font = pygame.font.Font(None, 80)
-            cell_surf = value_font.render(sketched_value, 0, (255, 255, 255))
-            cell_rect = cell_surf.get_rect(center=(315, 240))
-            screen.blit(cell_surf, cell_rect)
-            sketched_value = "Select Game Mode:"
-            value_font = pygame.font.Font(None, 80)
-            cell_surf = value_font.render(sketched_value, 0, (255, 255, 255))
-            cell_rect = cell_surf.get_rect(center=(315, 315))
-            screen.blit(cell_surf, cell_rect)
-            screen.blit(button1_surface, button_rectangle1.topleft)
-            screen.blit(button2_surface, button_rectangle2.topleft)
-            screen.blit(button3_surface, button_rectangle3.topleft)
-            pygame.display.flip()
-            if event.type == MOUSEBUTTONDOWN:
-                if button_rectangle1.collidepoint(event.pos):
-                    num_removed = 30
-                    start_screen = False
-                elif button_rectangle2.collidepoint(event.pos):
-                    num_removed = 40
-                    start_screen = False
-                elif button_rectangle3.collidepoint(event.pos):
-                    num_removed = 50
-                    start_screen = False
-
-# Create Sudoku board and reset button
-sudoku_board, correct_board = generate_sudoku(9, num_removed)
-answer = correct_board
-board = Board(630, 630, screen, 1, 9, num_removed, sudoku_board)
 
 
-
-
+start_screen=True
 clicked = False
 while True:
     # Event handling
@@ -173,11 +141,11 @@ while True:
                 clicked = False
             #Handle restart button click
             elif butt_rect2.collidepoint(event.pos):
-                # Logic for restarting the game
-                sudoku_board, correct_board = generate_sudoku(9, num_removed)
-                answer = correct_board
-                board = Board(630, 630, screen, 1, 9, num_removed, sudoku_board)
-                clicked = False
+                start_screen=True
+                # sudoku_board, correct_board = generate_sudoku(9, 6)
+                # answer = correct_board
+                # board = Board(630, 630, screen, 1, 9, 30, sudoku_board)
+                # clicked = False
             # Handle board cell clicks
             elif butt_rect3.collidepoint(event.pos):
                 sys.exit()
@@ -221,34 +189,6 @@ while True:
                 clicked = False
             if board.is_full():
                 game_over = True
-        elif start_screen:
-            screen.fill((255,255,255))
-            background=pygame.image.load("Untitled design.png")
-            screen.blit(background, background.get_rect(topleft=(0,0)))
-            sketched_value="Welcome to Sudoku"
-            value_font=pygame.font.Font(None, 80)
-            cell_surf=value_font.render(sketched_value, 0, (255, 255, 255))
-            cell_rect=cell_surf.get_rect(center=(315,240))
-            screen.blit(cell_surf, cell_rect)
-            sketched_value = "Select Game Mode:"
-            value_font = pygame.font.Font(None, 80)
-            cell_surf = value_font.render(sketched_value, 0, (255, 255, 255))
-            cell_rect = cell_surf.get_rect(center=(315, 315))
-            screen.blit(cell_surf, cell_rect)
-            screen.blit(button1_surface, button_rectangle1.topleft)
-            screen.blit(button2_surface, button_rectangle2.topleft)
-            screen.blit(button3_surface, button_rectangle3.topleft)
-            pygame.display.flip()
-            if event.type == MOUSEBUTTONDOWN:
-                if button_rectangle1.collidepoint(event.pos):
-                    num_removed = 30
-                    start_screen = False
-                elif button_rectangle2.collidepoint(event.pos):
-                    num_removed = 40
-                    start_screen = False
-                elif button_rectangle3.collidepoint(event.pos):
-                    num_removed = 50
-                    start_screen = False
 
     # Game over logic
     if game_over:
@@ -265,7 +205,31 @@ while True:
         cell_rect = cell_surf.get_rect(center=(315, 315))
         screen.blit(cell_surf, cell_rect)
         pygame.display.flip()
-
+    elif start_screen:
+        screen.fill((255,255,255))
+        background=pygame.image.load("Untitled design.png")
+        screen.blit(background, background.get_rect(topleft=(0,0)))
+        sketched_value="Welcome to Sudoku"
+        value_font=pygame.font.Font(None, 80)
+        cell_surf=value_font.render(sketched_value, 0, (255, 255, 255))
+        cell_rect=cell_surf.get_rect(center=(315,240))
+        screen.blit(cell_surf, cell_rect)
+        sketched_value = "Select Game Mode:"
+        value_font = pygame.font.Font(None, 80)
+        cell_surf = value_font.render(sketched_value, 0, (255, 255, 255))
+        cell_rect = cell_surf.get_rect(center=(315, 315))
+        screen.blit(cell_surf, cell_rect)
+        screen.blit(button1_surface, button_rectangle1.topleft)
+        screen.blit(button2_surface, button_rectangle2.topleft)
+        screen.blit(button3_surface, button_rectangle3.topleft)
+        pygame.display.flip()
+        if event.type == MOUSEBUTTONDOWN:
+            if button_rectangle1.collidepoint(event.pos):
+                num_removed = 30
+            elif button_rectangle2.collidepoint(event.pos):
+                num_removed = 40
+            elif button_rectangle3.collidepoint(event.pos):
+                num_removed = 50
 
 
         # Regular game drawing
