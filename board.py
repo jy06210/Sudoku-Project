@@ -2,8 +2,6 @@ import pygame
 from Constants import *
 import copy
 
-
-
 class Board:
     def __init__(self, width, height, screen, difficulty, row_length, removed_cells, board):
         self.width = width
@@ -14,6 +12,7 @@ class Board:
         self.selected_col = 0
         self.board = board
         self.original_board = copy.deepcopy(board)
+
     '''Draws an outline of the Sudoku grid, with bold lines to delineate the 3x3 boxes.
        Draws every cell on this board.
    '''
