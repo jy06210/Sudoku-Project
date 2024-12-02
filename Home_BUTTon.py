@@ -19,6 +19,28 @@
 #     return button2_surface, button_rectangle2
 import pygame
 FONT = 35
+
+def create_easy_button():
+    button1_font = pygame.font.Font(None, FONT)
+
+
+    button1_surface = pygame.Surface((100,50))
+    button1_surface.fill((255, 192, 203))  # Pink button background
+
+    # Render the "RESET" text
+    text_button1 = button1_font.render("Easy", True, (0,0,0))  # Black text
+    text_rectangle1 = text_button1.get_rect(center=(button1_surface.get_width() / 2, button1_surface.get_height() / 2))
+    text_button1 = button1_font.render("Medium", True, (0, 0, 0))  # Black text
+    text_rectangle1 = text_button1.get_rect(center=(button1_surface.get_width() / 2,button1_surface.get_height() / 2))
+    button1_surface.blit(text_button1, text_rectangle1)
+
+    # Define the button rectangle for interaction
+    button_rectangle1 = pygame.Rect(157.5, 405, 100, 50)
+
+
+    return button1_surface, button_rectangle1
+
+
 def create_medium_button():
     button2_font = pygame.font.Font(None, FONT)
 
@@ -26,6 +48,9 @@ def create_medium_button():
     button2_surface = pygame.Surface((100,50))
     button2_surface.fill((255, 192, 203))  # Pink button background
 
+    # Render the "RESET" text
+    text_button2 = button2_font.render("Medium", True, (0,0,0))  # Black text
+    text_rectangle2 = text_button2.get_rect(center=(button2_surface.get_width() / 2, button2_surface.get_height() / 2))
     text_button2 = button2_font.render("Medium", True, (0, 0, 0))  # Black text
     text_rectangle2 = text_button2.get_rect(center=(button2_surface.get_width() / 2,button2_surface.get_height() / 2))
     button2_surface.blit(text_button2, text_rectangle2)
@@ -33,4 +58,6 @@ def create_medium_button():
     # Define the button rectangle for interaction
     button_rectangle2 = pygame.Rect(265, 405, 100, 50)
 
+
     return button2_surface, button_rectangle2
+
