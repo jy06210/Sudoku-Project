@@ -64,11 +64,11 @@ class Board:
     '''
     def click(self, prow, pcol):
         """Determine the row and column based on the click position."""
-        if 0 <= prow < 630 and 0 <= pcol < 630:  # Ensure click is within bounds
-            row = prow // 70 +1 # Integer division to get the row
-            col = pcol // 70 +1# Integer division to get the column
+        if 0 <= prow < 630 and 0 <= pcol < 630:
+            row = prow // 70 +1
+            col = pcol // 70 +1
             return row, col
-        return None  # Return None if the click is out of bounds
+        return None
 
     '''Clears the value cell. 
     Note that the user can only remove the cell values and 
